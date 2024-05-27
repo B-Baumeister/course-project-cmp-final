@@ -15,14 +15,25 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <div class="btn-group">
-      <button type="button" class="btn btn-primary dropdown-toggle">
+    <div class="btn-group" *appDropdown="openDropdown">
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle"
+        (click)="openDropdown = !openDropdown"
+      >
         Manage Recipe <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li><a href="#">To Shopping List</a></li>
-        <li><a href="#">Edit Recipe</a></li>
-        <li><a href="#">Delete Recipe</a></li>
+        <div *ngIf="openDropdown">
+          <li
+            [ngClass]="{ open: openDropdown == true }"
+            [ngStyle]="{ color: openDropdown == true ? 'red' : 'blue' }"
+          >
+            <a href="#">To Shopping List</a>
+          </li>
+          <li><a href="#">Edit Recipe</a></li>
+          <li><a href="#">Delete Recipe</a></li>
+        </div>
       </ul>
     </div>
   </div>

@@ -15,21 +15,12 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <div class="btn-group">
-      <button
-        appDropdown
-        type="button"
-        class="btn btn-primary dropdown-toggle"
-        (click)="toggleList()"
-      >
-        {{ openDropdown ? "Hide" : "Show" }} Manage Recipe
+    <div class="btn-group" appDropdown>
+      <button type="button" class="btn btn-primary dropdown-toggle">
+        Manage Recipe
         <span class="caret"></span>
       </button>
-      <ul
-        class="dropdown-menu"
-       
-        *ngIf="openDropdown"
-      >
+      <ul class="dropdown-menu">
         <div>
           <li>
             <a href="#">To Shopping List</a>
@@ -45,6 +36,5 @@
   <div class="col-xs-12">{{ recipe.description }}</div>
 </div>
 <div class="row">
-  <p appDropdown>HELLOO</p>
   <div class="col-xs-12">Ingredients</div>
 </div>

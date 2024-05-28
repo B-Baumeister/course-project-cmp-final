@@ -10,11 +10,6 @@ export class RecipeDetailComponent implements OnInit {
   @Input() recipe: Recipe;
 
   constructor(private elRef: ElementRef, private renderer: Renderer2) {}
-  openDropdown: boolean = false;
 
   ngOnInit() {}
-
-  toggleList() {
-    this.openDropdown = !this.openDropdown;
-  }
 }

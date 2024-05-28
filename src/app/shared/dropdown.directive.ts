@@ -1,37 +1,41 @@
 import {
   Directive,
-  HostBinding,
+  ElementRef,
   HostListener,
+  OnInit,
   Renderer2,
-  Input,
-  TemplateRef,
-  ViewContainerRef,
+  HostBinding,
 } from '@angular/core';
 
 @Directive({
   selector: '[appDropdown]',
 })
-export class DrowdownDirective {
-  /*   private isShown: boolean = false; */
-  @Input() set appDropdown(condition: boolean) {
-    if (!condition) {
-      this.vcRef.createEmbeddedView(this.templateRef);
-    } else {
-      /*  this.vcRef.clear(); */
-    }
-  }
-  constructor(
-    private templateRef: TemplateRef<any>,
-    private vcRef: ViewContainerRef
-  ) {}
-  /*   @HostBinding('class.open') isOpen = false; */
-  /*  @HostListener('click') toggleOpen() {
-    if (this.isShown) {
-      this.renderer.(this.elRef.nativeElement, 'show');
-    } else {
-      this.renderer.addClass(this.elRef.nativeElement, 'show');
-    }
-    this.isShown = !this.isShown; */
+export class DropdownDirective implements OnInit {
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
-  /* this.isOpen = !this.isOpen; */
+  ngOnInit() {
+    this.renderer.setStyle(
+      this.elementRef.nativeElement,
+      'background-color',
+      'blue'
+    );
+  }
+
+  @HostListener('click') click(eventData: Event) {
+    this.backgroundColor = 'blue';
+  }
+  @HostBinding('style.backgroundColor') backgroundColor: String;
+
+  /*   @HostListener('mouseenter') mouseover(eventData: Event) {
+    this.renderer.setStyle(
+      this.elementRef.nativeElement,
+      'background-color',
+      'blue'
+    ); */
 }
+/*  @HostListener('mouseleave') mouseleave(eventData: Event) {
+    this.renderer.setStyle(
+      this.elementRef.nativeElement,
+      'background-color',
+      'transparent'
+    ); */

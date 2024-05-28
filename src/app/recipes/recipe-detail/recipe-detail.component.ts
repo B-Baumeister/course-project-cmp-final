@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ElementRef, Renderer2 } from '@angular/core';
 import { Recipe } from '../recipe.model';
+
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
@@ -9,6 +10,11 @@ export class RecipeDetailComponent implements OnInit {
   @Input() recipe: Recipe;
 
   constructor(private elRef: ElementRef, private renderer: Renderer2) {}
-  openDropdown = false;
+  openDropdown: boolean = false;
+
   ngOnInit() {}
+
+  toggleList() {
+    this.openDropdown = !this.openDropdown;
+  }
 }
